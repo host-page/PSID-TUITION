@@ -8,7 +8,7 @@
     <style>
         :root {
             --psid-orange: #FF6B00;
-            --psid-dark: #0055FF; /* Changed background to a visible, original blue */
+            --psid-dark: #0055FF; 
             --psid-gray: #f4f4f4;
             --text-main: #333333;
             --white: #ffffff;
@@ -49,7 +49,7 @@
         }
 
         .brand-header {
-            border-left: 6px solid #0000FF; /* Changed orange rectangle line to blue */
+            border-left: 6px solid #0000FF; 
             padding-left: 20px;
             margin-bottom: 40px;
         }
@@ -64,7 +64,7 @@
         }
 
         .brand-header p {
-            color: #000000; /* Changed font color of school name to black */
+            color: #000000; 
             font-weight: 600;
             letter-spacing: 1px;
             margin-top: 5px;
@@ -114,6 +114,197 @@
             justify-content: center;
         }
 
+        .calc-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+        }
+        
+        .calc-subtitle {
+            font-size: 0.85rem;
+            color: #e0e0e0; 
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .input-wrap {
+            margin-bottom: 25px;
+        }
+
+        .input-wrap label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            background: #2A2A2A;
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 8px;
+            color: var(--psid-orange);
+            font-size: 1.3rem;
+            font-weight: 700;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus {
+            border-color: var(--psid-orange);
+            background: #333;
+        }
+
+        .display-box {
+            background: var(--psid-orange);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .display-box small {
+            display: block;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .total-val {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .schedule {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #e0e0e0; 
+        }
+
+        .schedule b {
+            color: var(--white);
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .actions {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .btn-outline {
+            border: 2px solid #ddd;
+            color: #1A1A1A;
+        }
+
+        .btn-outline:hover { background: #eee; }
+
+        @media (max-width: 900px) {
+            .main-container { grid-template-columns: 1fr; }
+            .info-side { padding: 30px; }
+            .calc-side { padding: 40px 30px; }
+            .fee-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .brand-header h1 { font-size: 1.6rem; }
+            .actions { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="info-side">
+            <header class="brand-header">
+                <h1>Tuition & Fees</h1>
+                <p>Philippine School of Interior Design <strong>(PSID)</strong></p>
+            </header>
+
+            <div class="fee-grid">
+                <div class="fee-item">
+                    <label>Semestral Range</label>
+                    <span>₱90,000 - ₱98,000</span>
+                </div>
+                <div class="fee-item">
+                    <label>Rate Per Unit</label>
+                    <span>₱3,713.00</span>
+                </div>
+                <div class="fee-item">
+                    <label>Miscellaneous </label>
+                    <span>₱12,565.00</span>
+                </div>
+                <div class="fee-item">
+                    <label>Orientation</label>
+                    <span>₱1,032.00</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="https://www.psidahlen.edu.ph/curriculum" target="_blank" class="btn btn-outline">Course Curriculum</a>
+                <a href="https://host-page.github.io/Updated-PSID-Tuition-Fee-AY-2026-2027/" target="_blank" class="btn btn-outline">Detailed Breakdown</a>
+            </div>
+        </div>
+
+        <div class="calc-side">
+            <h2 class="calc-title">Cost per Unit Estimator</h2>
+            <p class="calc-subtitle">This estimator is provided for you to check the tuition cost based on the units you are taking. Please check the detailed fee breakdown as other fees may apply.</p>
+            
+            <div class="input-wrap">
+                <label for="units">Number of Units</label>
+                <input type="number" id="units" value="1" placeholder="e.g. 3" min="0" oninput="calculate()">
+            </div>
+
+            <div class="display-box">
+                <small>Estimated Tuition Cost</small>
+                <div class="total-val" id="total">₱3,713.00</div>
+            </div>
+
+            <div class="schedule">
+                <b>Payment Mode:</b>
+                <strong>• 62% downpayment upon enrollment<br>
+                • 38% balance due before midterms</strong>
+            </div>
+            
+            <a href="https://www.psidahlen.edu.ph/" style="color: var(--psid-orange); margin-top: 30px; text-decoration: none; font-size: 0.8rem; font-weight: 600;">← Back to Main Website</a>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const rate = 3713;
+            const input = document.getElementById('units').value;
+            const val = input > 0 ? input : 0;
+            
+            const total = (val * rate);
+            
+            document.getElementById('total').innerText = 
+                '₱' + total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+    </script>
+</body>
+</html>
         .calc-title {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.4rem;
